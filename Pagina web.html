@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Reparación de Computadoras Technology Company - Reparación de Computadoras</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --neon-blue: #00f7ff;
+            --neon-purple: #9d00ff;
+            --dark-bg: #0a0a1a;
+            --light-text: #f0f0f0;
+            --accent-pink: #ff00aa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', 'Segoe UI', sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            overflow-x: hidden;
+        }
+
+        /* Efectos futuristas */
+        .neon-glow {
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+        }
+
+        .neon-border {
+            border: 1px solid var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue), inset 0 0 10px var(--neon-blue);
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 10, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 4%;
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+            border-bottom: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--neon-blue);
+            animation: pulse 2s infinite;
+        }
+
+        .logo h1 {
+            font-size: 2rem;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-blue);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: var(--light-text);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(0, 247, 255, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+
+        .hero h2 span {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            color: var(--dark-bg);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 247, 255, 0.4);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            width: 50%;
+            max-width: 700px;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(0, 247, 255, 0.5));
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 70px;
+            height: 70px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 35px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse-whatsapp 1.5s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+
+        /* Secciones */
+        section {
+            padding: 100px 5%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+        }
+
+        /* Servicios */
+        #servicios {
+            background: linear-gradient(to bottom, var(--dark-bg) 0%, #0a0a2a 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 247, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 247, 255, 0.1);
+            border-color: var(--neon-blue);
+        }
+
+        .service-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-blue);
+        }
+
+        /* Nosotros */
+        #nosotros {
+            background: linear-gradient(to bottom, #0a0a2a 0%, var(--dark-bg) 100%);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 247, 255, 0.2);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        /* Contacto */
+        #contacto {
+            background: linear-gradient(to bottom, var(--dark-bg) 0%, #0a0a1a 100%);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 247, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--light-text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+            background: rgba(0, 247, 255, 0.05);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Redes Sociales */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--neon-blue);
+            color: var(--dark-bg);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 26, 0.9);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(0, 247, 255, 0.2);
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--neon-blue), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--neon-blue);
+        }
+
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Animaciones */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero h2 {
+                font-size: 3.2rem;
+            }
+            
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .about-img {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+                height: auto;
+                padding-bottom: 80px;
+            }
+            
+            .hero-content {
+                margin-bottom: 50px;
+            }
+            
+            .hero-image {
+                position: relative;
+                right: auto;
+                width: 80%;
+                margin: 0 auto;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background: var(--dark-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+                bottom: 30px;
+                right: 30px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5215527462786?text=Hola%20TechFix%20Pro,%20necesito%20información%20sobre%20reparación%20de%20computadoras" 
+       class="whatsapp-float" 
+       target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-computer"></i>
+                <h1>Centro de Reparación de Computadoras Technology Company</h1>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#inicio">Inicio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h2>Reparación de <span>Computadoras</span> con Tecnología de Vanguardia</h2>
+            <p>Soluciones rápidas y garantizadas para todos tus problemas tecnológicos. Expertos certificados listos para ayudarte.</p>
+            <a href="#contacto" class="cta-button">Solicita tu Diagnostico</a>
+            
+            <!-- Redes Sociales -->
+            <div class="social-links">
+                <a href="https://facebook.com/tupagina" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/tucuenta" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/tucuenta" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://youtube.com/tucanal" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Reparación de computadoras">
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section id="servicios">
+        <div class="section-container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Reparación de hardware" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Reparación de Hardware</h3>
+                        <p>Reemplazo de componentes dañados, limpieza interna, mantenimiento preventivo y correctivo para alargar la vida de tu equipo.</p>
+                        <a href="#contacto" class="cta-button">Más información</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="https://www.metacompliance.com/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2020/10/Malware.jpg.webp">
+                    <div class="service-content">
+                        <h3 class="service-title">Eliminación de Virus</h3>
+                        <p>Limpieza completa de malware. Instalación de antivirus y protección en tiempo real.</p>
+                        <a href="#contacto" class="cta-button">Más información</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Recuperación de datos" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Recuperación de Datos</h3>
+                        <p>Recuperamos tus archivos importantes incluso en los casos más difíciles de pérdida de datos por fallas de hardware o software.</p>
+                        <a href="#contacto" class="cta-button">Más información</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Actualización de equipos" class="service-img">
+                    <div class="service-content">
+                        <h3 class="service-title">Actualización de Equipos</h3>
+                        <p>Mejoramos el rendimiento de tu computadora con componentes de última generación y optimización del sistema.</p>
+                        <a href="#contacto" class="cta-button">Más información</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section id="nosotros">
+        <div class="section-container">
+            <h2 class="section-title">Sobre Nosotros</h2>
+            
+            <div class="about-container">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Nuestro equipo">
+                </div>
+                <div class="about-content">
+                    <h3>Expertos en Tecnología</h3>
+                    <p>En TechFix Pro combinamos más de 10 años de experiencia con pasión por la tecnología para ofrecerte el mejor servicio de reparación de computadoras.</p>
+                    <p>Nuestro equipo de técnicos certificados está en constante formación para mantenerse actualizado con las últimas tecnologías y métodos de reparación.</p>
+                    <p>Nos enorgullece ofrecer soluciones rápidas, efectivas y con garantía escrita en todos nuestros servicios.</p>
+                    
+                    <div class="social-links">
+                        <div class="social-links">
+                            <a href="https://facebook.com/tupagina" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://instagram.com/tucuenta" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="https://wa.me/5215527462786" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto">
+        <div class="section-container">
+            <h2 class="section-title">Contacto</h2>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Servicio de interés</label>
+                        <select id="service" class="form-control">
+                            <option value="">Seleccione un servicio</option>
+                            <option value="Reparación de Hardware">Reparación de Hardware</option>
+                            <option value="Eliminación de Virus">Eliminación de Virus</option>
+                            <option value="Recuperación de Datos">Recuperación de Datos</option>
+                            <option value="Actualización de Equipos">Actualización de Equipos</option>
+                            <option value="Soporte Remoto">Soporte Remoto</option>
+                            <option value="Venta de Accesorios">Venta de Accesorios</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Describe tu problema</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Centro de Reparación de Computadoras Technology Company</div>
+        
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Política de privacidad</a>
+        </div>        
+        <p class="copyright">© 2025 Centro de Reparación de Computadoras Technology Company. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Menú móvil
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Animación al hacer scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(10, 10, 26, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.background = 'rgba(10, 10, 26, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Smooth scroll para enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Formulario WhatsApp
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            const whatsappMessage = `Hola TechFix Pro, soy ${name}. ${phone ? `Mi teléfono es ${phone}.` : ''} ${service ? `Estoy interesado en: ${service}.` : ''} Mensaje: ${message}`;
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            window.open(`https://wa.me/5215527462786?text=${encodedMessage}`, '_blank');
+        });
+
+        // Efecto de máquina de escribir
+        const heroTitle = document.querySelector('.hero h2');
+        if (heroTitle) {
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+            
+            let i = 0;
+            const typingEffect = setInterval(() => {
+                if (i < originalText.length) {
+                    heroTitle.textContent += originalText.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typingEffect);
+                }
+            }, 50);
+        }
+    </script>
+</body>
+</html>
